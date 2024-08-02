@@ -14,6 +14,7 @@
 #     limitations under the License.
 """Isolation Forest Anomaly Detector."""
 from madi.detectors.base_detector import BaseAnomalyDetectionAlgorithm
+# from base_detector import BaseAnomalyDetectionAlgorithm
 import numpy as np
 import pandas as pd
 import sklearn.ensemble
