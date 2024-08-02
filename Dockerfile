@@ -15,7 +15,7 @@ COPY . .
 
 # Run the application
 # for training the model and plot the model performance 
-# CMD ["python", "inference_model.py"]
+CMD ["python", "inference_model.py"]
 
 # for interpreting the models
-CMD ["python", "inference_interpret.py"]
+# CMD ["python", "inference_interpret.py"]
