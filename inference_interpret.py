@@ -1,4 +1,9 @@
 #@title Colab Imports
+import time
+
+# Start the timer
+start_time = time.time()
+
 import sys
 import madi
 from madi.utils import file_utils
@@ -80,8 +85,8 @@ def plot_attribution(df_attribution: pd.DataFrame, anomaly_score: float) -> None
     lab.set_fontsize(28)
   p=plt.gcf()
   p.gca().add_artist(my_circle)
-  # plt.savefig('attribution_plot.jpg')
-  plt.show()
+  plt.savefig('attribution_plot.jpg')
+  # plt.show()
   
 def plot_gradient_series(df_grad: pd.DataFrame, delta: np.array) -> None:
     fig, ax = plt.subplots()
@@ -109,8 +114,8 @@ def plot_gradient_series(df_grad: pd.DataFrame, delta: np.array) -> None:
     ax.set_facecolor("white")
 
     plt.grid(True)
-    # plt.savefig('gradient_series.jpg')
-    plt.show()
+    plt.savefig('gradient_series.jpg')
+    # plt.show()
 
 
 #@title Choose the data set
@@ -418,6 +423,15 @@ for i in range(len(column_order)):
 
 df_grad.set_axis(column_order, axis=1)# inplace=True omitted
 plot_gradient_series(df_grad, delta_normalized)
+
+
+# End the timer
+end_time = time.time()
+
+# Calculate the elapsed time
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time:.2f} seconds")
+
 
 # TODO(sipple) from review:
 # Particularly for smart buildings, it would be cool to have the option to see

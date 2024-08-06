@@ -1,5 +1,9 @@
 import sys
 import time
+
+# Start the timer
+start_time = time.time()
+
 import madi
 from madi.utils import file_utils
 import numpy as np
@@ -25,6 +29,7 @@ from madi.detectors.neg_sample_random_forest import NegativeSamplingRandomForest
 from madi.utils.evaluation_utils import compute_auc
 import tensorflow as tf
 assert tf.version.VERSION > '2.1.0'
+
 
 
 #@title Choose the data set
@@ -228,7 +233,7 @@ print('Anomaly Detectors: ', list(ad_dict))
 
 #@title Execute Cross-Fold Validation {output-height:"unlimited"}
 number_crossfolds =  1#@param {type:"integer"}
-number_folds =  1#@param {type:"integer"}
+number_folds =  5#@param {type:"integer"}
 
 
 def fold_sample(sample: pd.DataFrame, n_folds: int = 5) ->  List[Dict[str, pd.DataFrame]]:
@@ -317,8 +322,8 @@ def plot_auc(ad_results: Dict[str, Dict[str, Dict[str, np.array]]],
   
   for sp in ax.spines:
     ax.spines[sp].set_color("black")
-  plt.show()
-  # plt.savefig('auc_curves.jpg')
+  # plt.show()
+  plt.savefig('auc_curves.jpg')
 
 anomaly_detectors = sorted(list(ad_dict))
 experiment_name = "%s with %s" %(ds.name, ", ".join(anomaly_detectors))
@@ -377,4 +382,9 @@ for ad in anomaly_detectors:
 print("Final Results:")
 print(df_results)
 
+# End the timer
+end_time = time.time()
 
+# Calculate the elapsed time
+elapsed_time = end_time - start_time
+print(f"Elapsed time: {elapsed_time:.2f} seconds")

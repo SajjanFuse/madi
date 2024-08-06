@@ -1,3 +1,11 @@
+## Docker Run
+
+- Building Docker
+  `docker build -t madi .`
+
+- Running Docker
+  `docker run -p 4000:80 madi:latest`
+
 # Multidimensional multimodal Anomaly Detection with Interpretation (MADI)
 
 This is the source code that accompanies
@@ -5,6 +13,7 @@ Iterpretable, Multidimensional, Multimodal Anomaly
 Detection for Detecting Device Failure (Sipple, 2020)
 
 ## Abstract
+
 In this paper we propose a scalable, unsupervised
 approach for detecting anomalies in the Internet
 of Things (IoT). Complex devices are connected
@@ -39,4 +48,3 @@ deployed at large scale to predict failures in real
 time in over 15,000 climate-control and power
 meter devices in 145 office buildings within the
 California Bay Area.
-
